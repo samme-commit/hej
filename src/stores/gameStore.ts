@@ -1,11 +1,10 @@
 import { create } from "zustand";
 
-
-type PlayerPath =
-    | "warrior"
-    | "keeper"
-    | "explorer"
-    | null;
+import type {
+    PlayerPath,
+    SceneId
+} from "../game/types";
+import type { StoryEvent } from "../game/types/events";
 
 
 interface PlayerStats {
@@ -25,7 +24,7 @@ interface GameState {
 
     location: string;
 
-    currentScene: string;
+    currentScene: SceneId;
 
     inventory: string[];
 
@@ -33,9 +32,13 @@ interface GameState {
 
     echoes: number;
 
+    playerName: string;
+
     playerPath: PlayerPath;
 
     stats: PlayerStats;
+
+    activeStoryEvent: StoryEvent | null;
 
 
     discoverMemory: (
@@ -45,6 +48,11 @@ interface GameState {
 
     addItem: (
         item: string
+    ) => void;
+
+
+    setPlayerName: (
+        name: string
     ) => void;
 
 
@@ -58,8 +66,13 @@ interface GameState {
     ) => void;
 
 
+    setActiveStoryEvent: (
+        event: StoryEvent | null
+    ) => void;
+
+
     changeScene: (
-        scene: string
+        scene: SceneId
     ) => void;
 
 }
@@ -80,6 +93,9 @@ export const useGameStore = create<GameState>((set) => ({
     echoes: 0,
 
 
+    playerName: "",
+
+
     playerPath: null,
 
 
@@ -94,6 +110,9 @@ export const useGameStore = create<GameState>((set) => ({
         awareness: 0
 
     },
+
+
+    activeStoryEvent: null,
 
 
     discoverMemory: (memory) =>
@@ -121,6 +140,14 @@ export const useGameStore = create<GameState>((set) => ({
         })),
 
 
+    setPlayerName: (name) =>
+        set({
+
+            playerName: name
+
+        }),
+
+
 
     setPlayerPath: (path) =>
         set({
@@ -143,6 +170,14 @@ export const useGameStore = create<GameState>((set) => ({
             }
 
         })),
+
+
+    setActiveStoryEvent: (event) =>
+        set({
+
+            activeStoryEvent: event
+
+        }),
 
 
 

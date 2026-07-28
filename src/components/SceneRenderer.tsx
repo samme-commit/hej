@@ -1,13 +1,23 @@
-import { useState } from "react";
+import {
+    useCallback,
+    useState
+} from "react";
 
 import GameLayout from "./GameLayout";
 import ActionButton from "./ActionButton";
 import ActionFeedback from "./ActionFeedback";
+import TypewriterText from "./TypewriterText";
 
-import type { Scene } from "../game/types";
+import type {
+    Choice,
+    Scene
+} from "../game/types";
 import { executeAction } from "../game/actions";
+import { getStoryEventForAction } from "../game/events";
+import { getSpecialOpeningChoices } from "../game/data/specialNames";
 import { useGameStore } from "../stores/gameStore";
 import SceneTransition from "./SceneTransition";
+import { GAME_CONSTANTS } from "../config/constants";
 
 interface Props {
     scene: Scene;
@@ -22,11 +32,109 @@ export default function SceneRenderer({
             (state) => state.changeScene
         );
 
-    const [selectedAction, setSelectedAction] =
-        useState<string | null>(null);
+    const activeStoryEvent =
+        useGameStore(
+            (state) => state.activeStoryEvent
+        );
+
+    const playerName =
+        useGameStore(
+            (state) => state.playerName
+        );
+
+    const memories =
+        useGameStore(
+            (state) => state.memories
+        );
+
+    const setActiveStoryEvent =
+        useGameStore(
+            (state) => state.setActiveStoryEvent
+        );
+
+    const [selectedChoice, setSelectedChoice] =
+        useState<Choice | null>(null);
 
     const [transitioning, setTransitioning] =
         useState(false);
+
+    const [completedSceneId, setCompletedSceneId] =
+        useState<string | null>(null);
+
+
+    const finishTyping = useCallback(() => {
+
+        setCompletedSceneId(scene.id);
+
+    }, [scene.id]);
+
+
+    const hasFinishedTyping =
+        completedSceneId === scene.id;
+
+
+    const choices =
+        scene.id === "forgotten_road"
+            ? [
+                ...getSpecialOpeningChoices(
+                    playerName,
+                    memories
+                ),
+                ...scene.choices
+            ]
+            : scene.choices;
+
+    function selectChoice(choice: Choice) {
+
+        const storyEvent =
+            getStoryEventForAction(choice.action);
+
+        if (!storyEvent) {
+
+            console.warn(
+                `No story event found for action: ${choice.action}`
+            );
+
+            return;
+
+        }
+
+        setSelectedChoice(choice);
+        setActiveStoryEvent(storyEvent);
+
+    }
+
+
+    function continueStory() {
+
+        if (!selectedChoice || !activeStoryEvent) {
+
+            return;
+
+        }
+
+        setTransitioning(true);
+
+        window.setTimeout(() => {
+
+            executeAction(selectedChoice.action);
+
+            setSelectedChoice(null);
+            setActiveStoryEvent(null);
+
+            changeScene(
+                activeStoryEvent.nextScene ?? scene.id
+            );
+
+        }, GAME_CONSTANTS.SCENE_TRANSITION_COVER_MS);
+
+        window.setTimeout(() => {
+
+            setTransitioning(false);
+
+        }, GAME_CONSTANTS.SCENE_TRANSITION_DURATION_MS);
+
+    }
 
     return (
 
@@ -38,71 +146,62 @@ export default function SceneRenderer({
                 active={transitioning}
             />
 
-            <div className="scene-text">
-
-                {scene.text.map((line, index) => (
-
-                    <p key={index}>
-                        {line}
-                    </p>
-
-                ))}
-
-            </div>
+            <TypewriterText
+                key={scene.id}
+                lines={scene.text}
+                onComplete={finishTyping}
+                characterDelay={
+                    GAME_CONSTANTS.TYPEWRITER_CHARACTER_DELAY_MS
+                }
+            />
 
 
             {
-                !selectedAction && (
+                hasFinishedTyping && (
 
-                    <div className="scene-actions">
+                    <div className="scene-interaction">
 
-                        {scene.choices.map((choice) => (
+                <div className="scene-actions">
 
-                            <ActionButton
-                                key={choice.id}
+                    {choices.map((choice) => (
 
-                                onClick={() => {
+                        <ActionButton
+                            key={choice.id}
 
-                                    executeAction(choice.action);
+                            onClick={() => {
 
-                                    setSelectedAction(choice.text);
+                                selectChoice(choice);
 
-                                }}
-                            >
+                            }}
+                        >
 
-                                {choice.text}
+                            {choice.text}
 
-                            </ActionButton>
+                        </ActionButton>
 
-                        ))}
+                    ))}
+
+                </div>
+
+
+                <div className="scene-event">
+
+                    {
+                        activeStoryEvent && (
+
+                            <ActionFeedback
+                                key={activeStoryEvent.id}
+                                event={activeStoryEvent}
+                                onContinue={continueStory}
+                            />
+
+                        )
+                    }
+
+                </div>
 
                     </div>
 
-                )
-            }
-
-            {
-                selectedAction && (
-
-                    <ActionFeedback
-                        action={selectedAction}
-                        onContinue={() => {
-
-                            setTransitioning(true);
-
-
-                            setTimeout(() => {
-
-                                changeScene(
-                                    "silent_forest"
-                                );
-
-
-                            }, 500);
-
-
-                        }}
-                    />
                 )
             }
 

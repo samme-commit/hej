@@ -4,7 +4,17 @@ import sv from "./locales/sv";
 import type { Language } from "./types";
 
 
-const languages = {
+type TranslationValue =
+    | string
+    | {
+        [key: string]: TranslationValue;
+    };
+
+
+const languages: Record<
+    Language,
+    Record<string, TranslationValue>
+> = {
     en,
     sv
 };
@@ -17,14 +27,23 @@ export function t(path: string) {
 
     const keys = path.split(".");
 
-    let value: any =
+    let value: TranslationValue =
         languages[currentLanguage];
 
 
     for (const key of keys) {
+
+        if (typeof value === "string" || !(key in value)) {
+
+            return path;
+
+        }
+
         value = value[key];
     }
 
 
-    return value ?? path;
+    return typeof value === "string"
+        ? value
+        : path;
 }

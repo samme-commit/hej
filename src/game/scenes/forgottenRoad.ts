@@ -17,7 +17,13 @@ export const forgottenRoad: Scene = {
 
         "You don't remember who you are.",
 
-        "A broken sword lies beside you."
+        "Beside you, three things remain untouched.",
+
+        "A broken sword, half-buried in ash.",
+
+        "A strange stone covered in marks you cannot read.",
+
+        "A path disappearing into the mist."
 
     ],
 

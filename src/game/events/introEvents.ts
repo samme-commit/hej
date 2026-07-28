@@ -1,6 +1,11 @@
+import type { StoryEvent } from "../types/events";
+
+
 export const introEvents = {
 
     chooseSword: {
+
+        id: "broken_sword_memory",
 
         title: "The Broken Sword",
 
@@ -14,14 +19,20 @@ export const introEvents = {
 
             "You are not watching it.",
 
-            "You are standing in it."
+            "You are standing in it.",
 
-        ]
+            "Then the road returns."
 
-    },
+        ],
+
+        nextScene: "silent_forest"
+
+    } satisfies StoryEvent,
 
 
     chooseStone: {
+
+        id: "strange_stone_memory",
 
         title: "The Strange Stone",
 
@@ -31,14 +42,20 @@ export const introEvents = {
 
             "It whispers a name.",
 
-            "You cannot remember whose."
+            "You cannot remember whose.",
 
-        ]
+            "When you open your eyes, the fog has thinned."
 
-    },
+        ],
+
+        nextScene: "silent_forest"
+
+    } satisfies StoryEvent,
 
 
     chooseRoad: {
+
+        id: "silent_road_memory",
 
         title: "The Silent Road",
 
@@ -48,10 +65,64 @@ export const introEvents = {
 
             "Every step feels familiar.",
 
-            "Someone has walked here before."
+            "Someone has walked here before.",
 
-        ]
+            "You cannot remember when."
 
-    }
+        ],
+
+        nextScene: "silent_forest"
+
+    } satisfies StoryEvent,
+
+
+    rememberAshenGate: {
+
+        id: "ashen_gate_memory",
+
+        title: "The Ashen Gate",
+
+        text: [
+
+            "Your name leaves your lips before you can stop it.",
+
+            "The fog parts around a gate buried beneath ash.",
+
+            "For one breath, you remember standing before it.",
+
+            "Then the gate is gone."
+
+        ],
+
+        nextScene: "forgotten_road",
+
+        continueText: "Return"
+
+    } satisfies StoryEvent,
+
+
+    rememberBlacksmithOath: {
+
+        id: "blacksmith_oath_memory",
+
+        title: "The Blacksmith's Oath",
+
+        text: [
+
+            "The smell of hot iron cuts through the cold air.",
+
+            "A hammer falls somewhere beyond the fog.",
+
+            "A voice says: \"I remember the promise.\"",
+
+            "When the sound fades, your hands are shaking."
+
+        ],
+
+        nextScene: "forgotten_road",
+
+        continueText: "Return"
+
+    } satisfies StoryEvent
 
 };

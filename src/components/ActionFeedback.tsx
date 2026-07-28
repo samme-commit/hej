@@ -1,37 +1,51 @@
+import type { StoryEvent } from "../game/types/events";
+
+
 interface Props {
-    action: string;
+    event: StoryEvent;
     onContinue: () => void;
 }
 
 
 export default function ActionFeedback({
-    action,
+    event,
     onContinue
 }: Props) {
 
     return (
 
-        <div className="action-feedback">
+        <section
+            className="action-feedback"
+            aria-live="polite"
+        >
 
-            <p>
-                Your choice echoes...
-            </p>
+            <h2 className="story-event-title">
+                {event.title}
+            </h2>
 
 
-            <p className="selected-action">
-                &gt; {action}
-            </p>
+            <div className="story-event-text">
+
+                {event.text.map((line) => (
+
+                    <p key={line}>
+                        {line}
+                    </p>
+
+                ))}
+
+            </div>
 
 
             <button
                 className="continue-button"
                 onClick={onContinue}
             >
-                Continue
+                {event.continueText ?? "Continue"}
             </button>
 
 
-        </div>
+        </section>
 
     );
 }

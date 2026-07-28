@@ -1,11 +1,14 @@
 import {
     chooseBrokenSword,
     chooseMemoryStone,
-    chooseSilentRoad
+    chooseSilentRoad,
+    rememberAshenGate,
+    rememberBlacksmithOath
 } from "./choiceActions";
 
+import type { GameAction } from "../types";
 
-export function executeAction(action: string) {
+export function executeAction(action: GameAction) {
 
 
     switch(action) {
@@ -28,6 +31,20 @@ export function executeAction(action: string) {
         case "choose_road":
 
             chooseSilentRoad();
+
+            break;
+
+
+        case "remember_ashen_gate":
+
+            rememberAshenGate();
+
+            break;
+
+
+        case "remember_blacksmith_oath":
+
+            rememberBlacksmithOath();
 
             break;
 

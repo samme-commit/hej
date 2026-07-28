@@ -1,4 +1,5 @@
 import SceneRenderer from "./components/SceneRenderer";
+import NameEntry from "./components/NameEntry";
 
 import { useGameStore } from "./stores/gameStore";
 
@@ -11,6 +12,31 @@ function App() {
         useGameStore(
             (state) => state.currentScene
         );
+
+
+    const playerName =
+        useGameStore(
+            (state) => state.playerName
+        );
+
+
+    const setPlayerName =
+        useGameStore(
+            (state) => state.setPlayerName
+        );
+
+
+    if (!playerName) {
+
+        return (
+
+            <NameEntry
+                onSubmit={setPlayerName}
+            />
+
+        );
+
+    }
 
 
     const scene =

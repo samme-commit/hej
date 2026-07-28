@@ -28,11 +28,6 @@ export function chooseBrokenSword() {
     });
 
 
-    console.log(
-        "Chosen path: Warrior",
-        useGameStore.getState()
-    );
-
 }
 
 
@@ -61,11 +56,6 @@ export function chooseMemoryStone() {
     });
 
 
-    console.log(
-        "Chosen path: Keeper",
-        useGameStore.getState()
-    );
-
 }
 
 
@@ -92,9 +82,42 @@ export function chooseSilentRoad() {
     });
 
 
-    console.log(
-        "Chosen path: Explorer",
-        useGameStore.getState()
+}
+
+
+export function rememberAshenGate() {
+
+    const game = useGameStore.getState();
+
+
+    game.discoverMemory(
+        "the_ashen_gate"
     );
+
+
+    game.updateStats({
+
+        knowledge: game.stats.knowledge + 2
+
+    });
+
+}
+
+
+export function rememberBlacksmithOath() {
+
+    const game = useGameStore.getState();
+
+
+    game.discoverMemory(
+        "the_blacksmiths_oath"
+    );
+
+
+    game.updateStats({
+
+        strength: game.stats.strength + 2
+
+    });
 
 }
