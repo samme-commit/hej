@@ -1,28 +1,19 @@
-import SceneRenderer from "./components/SceneRenderer";
+import GameExperience from "./components/GameExperience";
 import NameEntry from "./components/NameEntry";
 
 import { useGameStore } from "./stores/gameStore";
 
-import { scenes } from "./game/scenes";
-
 
 function App() {
-
-    const currentScene =
-        useGameStore(
-            (state) => state.currentScene
-        );
-
 
     const playerName =
         useGameStore(
             (state) => state.playerName
         );
 
-
-    const setPlayerName =
+    const startNewGame =
         useGameStore(
-            (state) => state.setPlayerName
+            (state) => state.startNewGame
         );
 
 
@@ -31,7 +22,7 @@ function App() {
         return (
 
             <NameEntry
-                onSubmit={setPlayerName}
+                onSubmit={startNewGame}
             />
 
         );
@@ -39,31 +30,7 @@ function App() {
     }
 
 
-    const scene =
-        scenes[currentScene];
-
-
-    if (!scene) {
-
-        return (
-
-            <div>
-                Scene not found:
-                {currentScene}
-            </div>
-
-        );
-
-    }
-
-
-    return (
-
-        <SceneRenderer
-            scene={scene}
-        />
-
-    );
+    return <GameExperience />;
 
 }
 

@@ -130,6 +130,16 @@ Possible actions:
 
 Combat should focus on choices, not speed.
 
+Combat actions currently include:
+
+- Attack — direct damage, improved by Strength and equipped gear
+- Guard — reduces the next enemy strike
+- Memory Ability — a path-specific action
+- Use Tonic — consumes a hotbar tonic and still costs a turn
+
+The Warrior remembers the Last Battle, the Keeper creates a Memory Ward,
+and the Explorer finds an opening.
+
 
 ---
 
@@ -194,6 +204,16 @@ Memory:
 "The blade remembers a battlefield."
 
 
+## Equipment and Hotbar
+
+Weapons and charms are equipped automatically when their story moment is
+claimed. The Nameless Ring grants a small Resolve bonus to combat.
+
+The hotbar contains consumables only. It unlocks after the first path choice,
+and can be used outside combat with keys 1–4. During combat, items are used
+through the combat action menu so every tonic costs a turn.
+
+
 ---
 
 # Endgame
@@ -207,3 +227,10 @@ The player chooses:
 - Restore memory
 - Preserve forgetting
 - Become the Keeper
+
+
+## Replay and Revisit Rules
+
+Story rewards cannot be collected repeatedly. Combat may be retried after a
+defeat, but a defeated enemy cannot be farmed for Echoes. Completed locations
+retain a way back to their local hub or can be left through the map.

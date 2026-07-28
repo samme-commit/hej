@@ -16,7 +16,13 @@ const storyEventsByAction: Partial<
 
     remember_ashen_gate: introEvents.rememberAshenGate,
 
-    remember_blacksmith_oath: introEvents.rememberBlacksmithOath
+    remember_blacksmith_oath: introEvents.rememberBlacksmithOath,
+
+    confront_forgotten_guard: introEvents.confrontForgottenGuard,
+
+    read_broken_shrine: introEvents.readBrokenShrine,
+
+    follow_forest_voice: introEvents.followForestVoice
 
 };
 

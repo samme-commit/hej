@@ -26,11 +26,11 @@ export const silentForest: Scene = {
     choices: [
 
         {
-            id: "explore_forest",
+            id: "follow_forest_voice",
 
-            text: "Explore the Forest",
+            text: "Follow the Voice",
 
-            action: "explore_forest"
+            action: "follow_forest_voice"
         }
 
     ]

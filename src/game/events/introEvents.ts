@@ -25,7 +25,7 @@ export const introEvents = {
 
         ],
 
-        nextScene: "silent_forest"
+        nextScene: "forgotten_guard"
 
     } satisfies StoryEvent,
 
@@ -48,7 +48,7 @@ export const introEvents = {
 
         ],
 
-        nextScene: "silent_forest"
+        nextScene: "broken_shrine"
 
     } satisfies StoryEvent,
 
@@ -122,6 +122,77 @@ export const introEvents = {
         nextScene: "forgotten_road",
 
         continueText: "Return"
+
+    } satisfies StoryEvent,
+
+
+    confrontForgottenGuard: {
+
+        id: "forgotten_guard_memory",
+
+        title: "The Forgotten Guard",
+
+        text: [
+
+            "The guard raises its sword, but its hand trembles.",
+
+            "\"Halt. State the name of the kingdom.\"",
+
+            "You have no answer.",
+
+            "For a moment, neither does it.",
+
+            "The blade lowers. The guard steps aside."
+
+        ],
+
+        nextScene: "unknown_wanderer"
+
+    } satisfies StoryEvent,
+
+
+    readBrokenShrine: {
+
+        id: "keepers_warning_memory",
+
+        title: "The Keeper's Warning",
+
+        text: [
+
+            "The markings shift beneath your hand.",
+
+            "A sentence forms in the dust.",
+
+            "\"To remember is to open the door again.\"",
+
+            "The final words have been scratched away."
+
+        ],
+
+        nextScene: "unknown_wanderer"
+
+    } satisfies StoryEvent,
+
+
+    followForestVoice: {
+
+        id: "silent_path_memory",
+
+        title: "The Silent Path",
+
+        text: [
+
+            "You follow the voice until even your footsteps disappear.",
+
+            "A narrow trail opens between the roots.",
+
+            "Someone has been waiting for you beyond the trees.",
+
+            "You cannot remember who."
+
+        ],
+
+        nextScene: "unknown_wanderer"
 
     } satisfies StoryEvent
 

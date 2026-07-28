@@ -50,7 +50,9 @@ export default function NameEntry({
 
 
                 <p>
-                    What name answers when the world calls?
+                    You do not remember your true name.
+                    <br />
+                    What name do you answer to when the world calls?
                 </p>
 
 
@@ -90,7 +92,7 @@ export default function NameEntry({
 
 
                 <p className="name-entry-hint">
-                    Some names are harder for the world to forget.
+                    Some names are echoes the world has not forgotten.
                 </p>
 
             </section>

@@ -127,6 +127,15 @@ Others believe it intentionally disappeared.
 The player has a connection to this kingdom.
 
 
+## The Ashen Gate
+
+The Ashen Gate stands in the buried heart of the Ancient Kingdom.
+
+It is the threshold where the Keepers made their final choice during the
+Great Forgetting. The Hollow Remnant still waits beyond it, sustained by the
+meaning the world tried to hide.
+
+
 ---
 
 # Factions

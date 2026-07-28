@@ -1,35 +1,39 @@
 :root {
 
-    /* Colors */
-    --color-bg: #050505;
-    --color-surface: #0b0b0b;
+    --color-bg: #070807;
+    --color-bg-deep: #030403;
+    --color-surface: #0d100d;
+    --color-surface-soft: #121712;
+    --color-line: #3c463d;
+    --color-line-strong: #687567;
 
-    --color-text: #b8b8b8;
-    --color-text-muted: #666;
-    --color-text-highlight: #ffffff;
+    --color-text: #c6cbbd;
+    --color-text-muted: #778074;
+    --color-text-faint: #4a5349;
+    --color-text-highlight: #f3f2e7;
 
+    --color-memory: #a6a0df;
+    --color-success: #8faa80;
+    --color-danger: #c87972;
+    --color-warning: #c4a76e;
+    --color-road: #a88c6d;
+    --color-forest: #8da784;
+    --color-city: #a1a9b7;
+    --color-hollow: #b08aaa;
 
-    /* Accent */
-    --color-memory: #8f8fff;
-    --color-danger: #aa4444;
-    --color-success: #6fa86f;
+    --font-main: "Courier New", Courier, monospace;
 
+    --layout-max: 1120px;
+    --sidebar-min: 260px;
 
-    /* Typography */
-    --font-main:
-        "Courier New",
-        monospace;
-
-
-    /* Spacing */
+    --space-2xs: 4px;
     --space-xs: 8px;
     --space-sm: 16px;
     --space-md: 24px;
     --space-lg: 40px;
+    --space-xl: 64px;
 
-
-    /* Animation */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.4s ease;
+    --transition-fast: 150ms ease;
+    --transition-normal: 320ms ease;
 
 }

@@ -3,6 +3,7 @@ import {
     useMemo,
     useState
 } from "react";
+import type { KeyboardEvent } from "react";
 
 
 interface Props {
@@ -75,9 +76,42 @@ export default function TypewriterText({
             .split("\n");
 
 
+    function revealAll() {
+
+        if (!isComplete) {
+
+            setCharacterCount(fullText.length);
+
+        }
+
+    }
+
+
+    function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+
+        if (event.key === "Enter" || event.key === " ") {
+
+            event.preventDefault();
+            revealAll();
+
+        }
+
+    }
+
+
     return (
 
-        <div className="scene-text typewriter-text">
+        <div
+            className={
+                "scene-text typewriter-text " +
+                (!isComplete ? "typewriter-text-active" : "")
+            }
+            onClick={revealAll}
+            onKeyDown={handleKeyDown}
+            role={!isComplete ? "button" : undefined}
+            tabIndex={!isComplete ? 0 : undefined}
+            title={!isComplete ? "Click to reveal text" : undefined}
+        >
 
             {visibleLines.map((line, index) => (
 

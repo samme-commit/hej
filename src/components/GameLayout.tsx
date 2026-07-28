@@ -1,6 +1,16 @@
+import Divider from "./Divider";
+import GameHud from "./GameHud";
+import Hotbar from "./Hotbar";
+
+import { useGameStore } from "../stores/gameStore";
+
+
 interface Props {
+
     title: string;
+
     children: React.ReactNode;
+
 }
 
 
@@ -9,12 +19,23 @@ export default function GameLayout({
     children
 }: Props) {
 
-    return (
-        <main className="game-layout">
+    const hasUnlockedHud =
+        useGameStore(
+            (state) => state.playerPath !== null
+        );
 
-            <div className="divider">
-                ════════════════════════════
-            </div>
+
+    return (
+
+        <main
+            className={`game-layout${
+                hasUnlockedHud
+                    ? ""
+                    : " game-layout--intro"
+            }`}
+        >
+
+            <Divider />
 
 
             <h1 className="game-title">
@@ -22,9 +43,16 @@ export default function GameLayout({
             </h1>
 
 
-            <div className="divider">
-                ════════════════════════════
-            </div>
+            <Divider />
+
+
+            {
+                hasUnlockedHud && (
+
+                    <GameHud />
+
+                )
+            }
 
 
             <section className="game-content">
@@ -32,10 +60,19 @@ export default function GameLayout({
             </section>
 
 
-            <div className="divider">
-                ════════════════════════════
-            </div>
+            {
+                hasUnlockedHud && (
+
+                    <Hotbar />
+
+                )
+            }
+
+
+            <Divider />
 
         </main>
+
     );
+
 }

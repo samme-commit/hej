@@ -14,7 +14,6 @@ import type {
 } from "../game/types";
 import { executeAction } from "../game/actions";
 import { getStoryEventForAction } from "../game/events";
-import { getSpecialOpeningChoices } from "../game/data/specialNames";
 import { useGameStore } from "../stores/gameStore";
 import SceneTransition from "./SceneTransition";
 import { GAME_CONSTANTS } from "../config/constants";
@@ -35,16 +34,6 @@ export default function SceneRenderer({
     const activeStoryEvent =
         useGameStore(
             (state) => state.activeStoryEvent
-        );
-
-    const playerName =
-        useGameStore(
-            (state) => state.playerName
-        );
-
-    const memories =
-        useGameStore(
-            (state) => state.memories
         );
 
     const setActiveStoryEvent =
@@ -73,16 +62,7 @@ export default function SceneRenderer({
         completedSceneId === scene.id;
 
 
-    const choices =
-        scene.id === "forgotten_road"
-            ? [
-                ...getSpecialOpeningChoices(
-                    playerName,
-                    memories
-                ),
-                ...scene.choices
-            ]
-            : scene.choices;
+    const choices = scene.choices;
 
     function selectChoice(choice: Choice) {
 

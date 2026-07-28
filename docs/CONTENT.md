@@ -142,7 +142,7 @@ Tutorial combat.
 
 Reward:
 
-First real memory fragment.
+The Guardian's Oath, a small strength increase, and an Ashen Tonic.
 
 
 ---
@@ -208,6 +208,25 @@ Contains:
 - Forgotten equipment
 - Personal journals
 - Survivor memories
+- Optional quest: A Letter Unsent
+
+
+## The Rootbound Grove
+
+Contains:
+
+- The Hollowborn encounter
+- The Forgotten Key
+- The First Fear memory
+
+
+## Keeper's Cairn
+
+Contains:
+
+- The Keeper's Warning
+- A Keeper-only hidden line
+- The final forest echo required to reach the city
 
 
 ---
@@ -241,6 +260,8 @@ Contains:
 
 - Lost memories
 - Information about the Keepers
+- The Memory Wraith encounter
+- The Final Memory
 
 
 ---
@@ -258,6 +279,13 @@ The player discovers:
 - Their role before The Great Forgetting
 - The truth about The Hollow
 - Why memories disappeared
+
+
+## The Ashen Gate
+
+The gate stands in the buried heart of the Ancient Kingdom.
+
+It is the final threshold and the home of the Hollow Remnant.
 
 
 ---
@@ -317,7 +345,32 @@ Avoid content that exists only for decoration.
 
 ---
 
-# Current Planned Content
+# Current Playable Arc
+
+```text
+The Forgotten Road
+  ├─ Broken Sword → Forgotten Guard → Guardian's Oath
+  ├─ Strange Stone → Broken Shrine
+  └─ Silent Road → Hidden Trail
+                  ↓
+            Unknown Wanderer
+                  ↓
+             Silent Forest
+        ┌─────────┼─────────┐
+    Lost Camp  Rootbound  Keeper's Cairn
+        └─────────┴─────────┘
+                  ↓
+           Forgotten City
+        ┌─────────┼─────────┐
+      Library    Palace   Archive
+                  ↓
+              Ashen Gate
+                  ↓
+             Three endings
+```
+
+
+# Current Content
 
 
 ## Areas
@@ -325,7 +378,8 @@ Avoid content that exists only for decoration.
 - The Forgotten Road
 - The Silent Forest
 - The Forgotten City
-- The Ancient Kingdom
+- The Memory Archive
+- The Ashen Gate, in the buried heart of the Ancient Kingdom
 
 
 ## Enemies
@@ -333,6 +387,7 @@ Avoid content that exists only for decoration.
 - Forgotten Guard
 - Hollowborn
 - Memory Wraiths
+- Hollow Remnant
 
 
 ## NPCs
@@ -340,6 +395,7 @@ Avoid content that exists only for decoration.
 - Unknown Wanderer
 - Keeper Remnant
 - Nameless Survivors
+- Keeper Remnant
 
 
 ## Items
@@ -348,6 +404,8 @@ Avoid content that exists only for decoration.
 - Memory Stone
 - Nameless Ring
 - Forgotten Key
+- Ashen Tonic
+- Archive Seal
 
 
 ## Memories
@@ -356,3 +414,5 @@ Avoid content that exists only for decoration.
 - The Voice In The Dark
 - The Lost Name
 - The Final Choice
+- The Guardian's Oath
+- The Final Memory

@@ -1,4 +1,12 @@
+import {
+    useCallback,
+    useState
+} from "react";
+
+import TypewriterText from "./TypewriterText";
+
 import type { StoryEvent } from "../game/types/events";
+import { GAME_CONSTANTS } from "../config/constants";
 
 
 interface Props {
@@ -11,6 +19,16 @@ export default function ActionFeedback({
     event,
     onContinue
 }: Props) {
+
+    const [hasFinishedTyping, setHasFinishedTyping] =
+        useState(false);
+
+
+    const finishTyping = useCallback(() => {
+
+        setHasFinishedTyping(true);
+
+    }, []);
 
     return (
 
@@ -26,23 +44,28 @@ export default function ActionFeedback({
 
             <div className="story-event-text">
 
-                {event.text.map((line) => (
-
-                    <p key={line}>
-                        {line}
-                    </p>
-
-                ))}
+                <TypewriterText
+                    lines={event.text}
+                    onComplete={finishTyping}
+                    characterDelay={
+                        GAME_CONSTANTS.TYPEWRITER_CHARACTER_DELAY_MS
+                    }
+                />
 
             </div>
 
+            {
+                hasFinishedTyping && (
 
-            <button
-                className="continue-button"
-                onClick={onContinue}
-            >
-                {event.continueText ?? "Continue"}
-            </button>
+                    <button
+                        className="continue-button"
+                        onClick={onContinue}
+                    >
+                        {event.continueText ?? "Continue"}
+                    </button>
+
+                )
+            }
 
 
         </section>

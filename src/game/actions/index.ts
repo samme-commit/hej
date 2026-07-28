@@ -3,7 +3,10 @@ import {
     chooseMemoryStone,
     chooseSilentRoad,
     rememberAshenGate,
-    rememberBlacksmithOath
+    rememberBlacksmithOath,
+    confrontForgottenGuard,
+    readBrokenShrine,
+    followForestVoice
 } from "./choiceActions";
 
 import type { GameAction } from "../types";
@@ -45,6 +48,27 @@ export function executeAction(action: GameAction) {
         case "remember_blacksmith_oath":
 
             rememberBlacksmithOath();
+
+            break;
+
+
+        case "confront_forgotten_guard":
+
+            confrontForgottenGuard();
+
+            break;
+
+
+        case "read_broken_shrine":
+
+            readBrokenShrine();
+
+            break;
+
+
+        case "follow_forest_voice":
+
+            followForestVoice();
 
             break;
 

@@ -42,6 +42,11 @@ export function chooseMemoryStone() {
     );
 
 
+    game.addItem(
+        "memory_stone"
+    );
+
+
     game.discoverMemory(
         "voice_in_the_dark"
     );
@@ -49,7 +54,9 @@ export function chooseMemoryStone() {
 
     game.updateStats({
 
-        health: 25,
+        currentHealth: 125,
+
+        maxHealth: 125,
 
         knowledge: 10
 
@@ -117,6 +124,56 @@ export function rememberBlacksmithOath() {
     game.updateStats({
 
         strength: game.stats.strength + 2
+
+    });
+
+}
+
+
+export function confrontForgottenGuard() {
+
+    const game = useGameStore.getState();
+
+
+    game.discoverMemory(
+        "the_guardians_oath"
+    );
+
+}
+
+
+export function readBrokenShrine() {
+
+    const game = useGameStore.getState();
+
+
+    game.discoverMemory(
+        "the_keepers_warning"
+    );
+
+
+    game.updateStats({
+
+        knowledge: game.stats.knowledge + 3
+
+    });
+
+}
+
+
+export function followForestVoice() {
+
+    const game = useGameStore.getState();
+
+
+    game.discoverMemory(
+        "the_silent_path"
+    );
+
+
+    game.updateStats({
+
+        awareness: game.stats.awareness + 3
 
     });
 
