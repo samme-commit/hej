@@ -11,3 +11,10 @@ export interface Scene {
     text: string[];
     choices: Choice[];
 }
+
+
+export type PlayerPath =
+    | "warrior"
+    | "keeper"
+    | "explorer"
+    | null;

@@ -25,35 +25,29 @@ export const forgottenRoad: Scene = {
     choices: [
 
         {
-            id: "examine_sword",
+            id: "broken_sword",
 
-            text:
-                "Examine Sword",
+            text: "Examine the Broken Sword",
 
-            action:
-                "examine_sword"
+            action: "choose_sword"
         },
 
 
         {
-            id: "touch_stone",
+            id: "memory_stone",
 
-            text:
-                "Touch Strange Stone",
+            text: "Touch the Strange Stone",
 
-            action:
-                "touch_stone"
+            action: "choose_stone"
         },
 
 
         {
-            id: "follow_road",
+            id: "silent_road",
 
-            text:
-                "Follow The Road",
+            text: "Follow the Silent Road",
 
-            action:
-                "follow_road"
+            action: "choose_road"
         }
 
     ]

@@ -204,3 +204,52 @@ p {
     transform: translateX(6px);
 
 }
+
+/* SceneTransition.tsx */
+.scene-transition {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: black;
+
+    z-index: 999;
+
+    animation: sceneSweep 1s ease forwards;
+
+}
+
+
+@keyframes sceneSweep {
+
+
+    0% {
+
+        transform: translateX(-100%);
+
+    }
+
+
+    45% {
+
+        transform: translateX(0);
+
+    }
+
+
+    55% {
+
+        transform: translateX(0);
+
+    }
+
+
+    100% {
+
+        transform: translateX(100%);
+
+    }
+
+
+}

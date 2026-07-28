@@ -5,26 +5,38 @@ import ActionButton from "./ActionButton";
 import ActionFeedback from "./ActionFeedback";
 
 import type { Scene } from "../game/types";
-
+import { executeAction } from "../game/actions";
+import { useGameStore } from "../stores/gameStore";
+import SceneTransition from "./SceneTransition";
 
 interface Props {
     scene: Scene;
 }
 
-
 export default function SceneRenderer({
     scene
 }: Props) {
 
+    const changeScene =
+        useGameStore(
+            (state) => state.changeScene
+        );
+
     const [selectedAction, setSelectedAction] =
         useState<string | null>(null);
 
+    const [transitioning, setTransitioning] =
+        useState(false);
 
     return (
 
         <GameLayout
             title={scene.title}
         >
+
+            <SceneTransition
+                active={transitioning}
+            />
 
             <div className="scene-text">
 
@@ -39,30 +51,35 @@ export default function SceneRenderer({
             </div>
 
 
-            <div className="scene-actions">
+            {
+                !selectedAction && (
 
-                {scene.choices.map((choice) => (
+                    <div className="scene-actions">
 
-                    <ActionButton
-                        key={choice.id}
+                        {scene.choices.map((choice) => (
 
-                        onClick={() => {
+                            <ActionButton
+                                key={choice.id}
 
-                            setSelectedAction(
-                                choice.text
-                            );
+                                onClick={() => {
 
-                        }}
-                    >
+                                    executeAction(choice.action);
 
-                        {choice.text}
+                                    setSelectedAction(choice.text);
 
-                    </ActionButton>
+                                }}
+                            >
 
-                ))}
+                                {choice.text}
 
-            </div>
+                            </ActionButton>
 
+                        ))}
+
+                    </div>
+
+                )
+            }
 
             {
                 selectedAction && (
@@ -71,7 +88,18 @@ export default function SceneRenderer({
                         action={selectedAction}
                         onContinue={() => {
 
-                            console.log("Continue");
+                            setTransitioning(true);
+
+
+                            setTimeout(() => {
+
+                                changeScene(
+                                    "silent_forest"
+                                );
+
+
+                            }, 500);
+
 
                         }}
                     />
