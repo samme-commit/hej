@@ -1,0 +1,35 @@
+:root {
+
+    /* Colors */
+    --color-bg: #050505;
+    --color-surface: #0b0b0b;
+
+    --color-text: #b8b8b8;
+    --color-text-muted: #666;
+    --color-text-highlight: #ffffff;
+
+
+    /* Accent */
+    --color-memory: #8f8fff;
+    --color-danger: #aa4444;
+    --color-success: #6fa86f;
+
+
+    /* Typography */
+    --font-main:
+        "Courier New",
+        monospace;
+
+
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+
+
+    /* Animation */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.4s ease;
+
+}

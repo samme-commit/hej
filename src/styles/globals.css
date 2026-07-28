@@ -1,0 +1,100 @@
+@import "./variables.css";
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: #050505;
+    color: #d4d4d4;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#root {
+    width: 100%;
+}
+
+
+main {
+    max-width: 700px;
+    width: 90%;
+
+    padding: 40px;
+}
+
+
+h1 {
+    font-size: 28px;
+    letter-spacing: 4px;
+
+    color: #eeeeee;
+
+    margin-bottom: 40px;
+}
+
+
+p {
+    line-height: 1.8;
+
+    color: var(--color-text);
+
+    font-size: 16px;
+}
+
+
+.action-button {
+
+    display: block;
+
+    background: none;
+    border: none;
+
+    color: #bdbdbd;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    padding: 8px 0;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.action-button:hover {
+
+    color: white;
+
+    transform: translateX(6px);
+}
+
+
+.action-button:active {
+
+    transform: translateX(3px);
+}
+
+.divider {
+    color: #444;
+
+    margin: 24px 0;
+
+    user-select: none;
+
+    letter-spacing: 1px;
+}

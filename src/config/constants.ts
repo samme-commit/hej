@@ -1,0 +1,9 @@
+export const GAME_CONSTANTS = {
+
+    MAX_INVENTORY_SIZE: 50,
+
+    STARTING_HEALTH: 100,
+
+    STARTING_ECHOES: 0
+
+};

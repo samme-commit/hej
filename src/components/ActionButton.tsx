@@ -3,15 +3,17 @@ interface Props {
     onClick: () => void;
 }
 
-
 export default function ActionButton({
     children,
     onClick
 }: Props) {
 
     return (
-        <button onClick={onClick}>
-            {children}
+        <button
+            className="action-button"
+            onClick={onClick}
+        >
+            [{children}]
         </button>
     );
 }

@@ -2,7 +2,9 @@ import GameText from "./components/GameText";
 import ActionButton from "./components/ActionButton";
 
 import { useGameStore } from "./stores/gameStore";
+import Divider from "./components/Divider";
 
+import { t } from "./i18n";
 
 function App() {
 
@@ -20,36 +22,42 @@ function App() {
     return (
         <main>
 
+            <Divider />
+
             <h1>
-                THE FORGOTTEN ROAD
+                {t("game.title")}
             </h1>
+
+            <Divider />
 
 
             <GameText>
-                You wake up.
+                {t("intro.wake_up")}
                 <br />
                 <br />
-                The ground is cold.
+                {t("intro.cold_ground")}
                 <br />
                 <br />
-                You don't remember who you are.
+                {t("intro.unknown")}
             </GameText>
 
 
-            <ActionButton
-                onClick={() => {
-                    discoverMemory(
-                        "The Forgotten Road"
-                    );
+            <Divider />
 
-                    addItem(
-                        "Broken Sword"
-                    );
-                }}
-            >
-                Look around
+
+            <ActionButton>
+                {t("actions.look_around")}
             </ActionButton>
 
+            <ActionButton>
+                {t("actions.examine_sword")}
+            </ActionButton>
+
+            <ActionButton>
+                {t("actions.touch_stone")}
+            </ActionButton>
+
+            <Divider />
 
         </main>
     );
