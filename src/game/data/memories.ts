@@ -1,8 +1,19 @@
 export const memories = {
     forgottenRoad: {
-        id: "forgotten_road",
-        title: "The Forgotten Road",
-        description:
-            "A road lost to time. Something about it feels familiar."
+        id: "forgotten_road_start",
+
+        text:
+        "You wake up. The ground is cold.",
+
+        choices: [
+            {
+                text: "Examine sword",
+                action: "find_sword"
+            },
+            {
+                text: "Touch stone",
+                action: "discover_stone"
+            }
+        ]
     }
 };

@@ -1,7 +1,7 @@
-import GameText from "../components/GameText";
-import ActionButton from "../components/ActionButton";
+import GameText from "./components/GameText";
+import ActionButton from "./components/ActionButton";
 
-import { useGameStore } from "../stores/gameStore";
+import { useGameStore } from "./stores/gameStore";
 
 
 function App() {
