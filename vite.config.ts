@@ -1,7 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+
+export default defineConfig(({ command }) => ({
+
+    // GitHub Pages serves project sites below /<repository-name>/.
+    // Keep local development at the normal root URL.
+    base: command === "build" ? "/ForgottenRoad/" : "/",
+
+    plugins: [react()]
+
+}));
